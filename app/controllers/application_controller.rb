@@ -13,4 +13,11 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  # Non logged in user
+  def not_logged_in_user
+    if logged_in?
+      redirect_to current_user
+    end
+  end
 end
