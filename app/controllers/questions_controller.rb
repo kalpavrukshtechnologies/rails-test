@@ -1,4 +1,11 @@
 class QuestionsController < ApplicationController
+  before_action :logged_in_user, only: [:index, :create]
+
+  def index
+    @questions = Question.all
+    @question = Question.new
+  end
+
   def create
     @question = current_user.questions.build(question_params)
     if @question.save
