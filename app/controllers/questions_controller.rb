@@ -1,9 +1,15 @@
 class QuestionsController < ApplicationController
-  before_action :logged_in_user, only: [:index, :create]
+  before_action :logged_in_user
 
   def index
     @questions = Question.all
     @question = Question.new
+  end
+
+  def show
+    @question = Question.find(params[:id])
+    @answers = @question.answers
+    @answer = Answer.new
   end
 
   def create
