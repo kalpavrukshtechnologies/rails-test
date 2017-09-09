@@ -1,0 +1,10 @@
+<%= form_for(@question, url: questions_path) do |f| %>
+  <%= render 'shared/error_messages' %>
+  <%= f.label "Ask a question" %>
+  <%= f.text_area :title, class: 'form-control' %>
+
+  <%= f.label :private %>
+  <%= f.check_box :private %>
+  <br>
+  <%= f.submit "Post Question", class: "btn btn-primary" %>
+<% end %>
