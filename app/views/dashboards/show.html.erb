@@ -1,0 +1,7 @@
+<h1>Dashboard</h1>
+<div class="pull-right"><%= link_to "Start asking your questions", login_path %></div>
+<%= render 'shared/flash_messages' %>
+
+<p>Total Users count: <%= @users.count %></p>
+<p>Total Questions count: <%= @questions.count %></p>
+<p>Total Answers count: <%= @answers.count %></p>

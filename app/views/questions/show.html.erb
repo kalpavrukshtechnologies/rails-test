@@ -1,0 +1,41 @@
+<h1>Question</h1>
+
+<%= render 'shared/flash_messages' %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <p><%= @question.title %></p>
+    <p>- <%= @question.user.name %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <table border="2">
+      <thead>
+        <tr>
+          <th>Answer</th>
+          <th>By</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @answers.each do |answer| %>
+          <tr>
+            <td><%= answer.body %></td>
+            <td><%= answer.user.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@answer, url: answers_path) do |f| %>
+      <%= f.hidden_field :question_id, value: @question.id %>
+      <%= f.text_area :body, class: 'form-control', placeholder: 'Type your answer' %>
+    
+      <%= f.submit "Post Answer", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
